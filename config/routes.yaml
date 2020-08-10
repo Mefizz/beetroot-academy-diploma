@@ -1,3 +1,37 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+
+category_index:
+    path: /category/{id}
+    controller: App\Controller\ListController::index
+
+product_show:
+    path: /product/{id}
+    controller: App\Controller\ProductController::index
+    requirements:
+        id: '\d+'
+
+product_add_vote:
+    path: /product/{id}/vote
+    methods:    POST
+    controller: App\Controller\ProductController::addVote
+
+product_add_to_cart:
+    path: /product/{id}/add_to_cart
+    methods:    POST
+    controller: App\Controller\ProductController::addToCart
+
+product_show_cart:
+    path: /product/show_cart
+    methods:    POST
+    controller: App\Controller\ProductController::showCart
+
+checkout:
+    path: /checkout
+    methods:    [GET, POST]
+    controller: App\Controller\CheckoutController::index
+#contact_us:
+#    path/contact_us
+#    methods:    [GET, POST]
+#    controller: App\Controller\ContactUsController::index

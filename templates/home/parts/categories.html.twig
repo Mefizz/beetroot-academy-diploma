@@ -1,0 +1,22 @@
+<li><a href="#">Одежка</a>
+    <ul class="sub-menu">
+        {% for cat in navigation.getMenu %}
+            {% if cat.categories.isEmpty %}
+                <li><a href="{{ path('category_index', {'id': cat.id}) }}">{{ cat.title }}</a></li>
+            {% else %}
+                <li class="dropdown mega-dropdown active">
+                    <a href="{{ path('category_index', {'id': cat.id}) }}" class="dropdown-toggle" data-toggle="dropdown">{{ cat.title }}<span class="caret"></span></a>
+                    <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+                        <div class="w3ls_vegetables">
+                            <ul>
+                                {% for subcat in cat.categories %}
+                                    <li><a href="{{ path('category_index', {'id': subcat.id}) }}">{{ subcat.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>

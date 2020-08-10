@@ -1,0 +1,15 @@
+ {% for product in category.products %}
+                            <div class="pi-pic">
+                                <div class="tag-sale">ON SALE</div>
+                                <img src="{{ product.image }}" alt="">
+                                <div class="pi-links">
+                                    <a href="{{ path('product_show', {'id': product.id}) }}" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>{{ product.getCurrentPrice }} $</h6>
+                                <p>{{ product.title }}</p>
+                            </div>
+                        </div>
+                    </div>

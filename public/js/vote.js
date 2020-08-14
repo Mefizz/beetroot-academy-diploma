@@ -1,6 +1,6 @@
 $(function() {
     let flag = true;
-    $('.p-rating label').on('click', function() {
+    $('.starRating label').on('click', function() {
         if (!flag) {
             return;
         }
@@ -12,7 +12,7 @@ $(function() {
         $.post(`/product/${PRODUCT_ID}/vote`, {vote: star, token : TOKEN})
             .done(function(val) {
                 flag = false;
-                $(`.p-rating label[for="rating${val}"]`).click();
+                $(`.starRating label[for="rating${val}"]`).click();
                 flag = true;
             })
             .always(function() {

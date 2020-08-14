@@ -453,11 +453,6 @@ ol {
 	visibility: visible;
 	opacity: 1;
 	margin-top: 0;
-
-}.main-menu li:hover .dropdown mega-dropdown active {
-	visibility: visible;
-	opacity: 1;
-	margin-top: 0;
 }
 
 .main-menu li:hover>a {

@@ -77,4 +77,36 @@ class Cart implements \Countable
         }
         return $cost;
     }
+
+    public function clear()
+    {
+        if ($this->session->has('order')) {
+            $this->session->remove('order');
+        }
+    }
+
+    public function removeItemByProduct(Product $product)
+    {
+        if (!$this->session->has('order')) {
+            return [];
+        }
+        $products = $this->session->get('order');
+        if (!empty($products[$product->getId()])) {
+            unset($products[$product->getId()]);
+            $this->session->set('order', $products);
+        }
+    }
+
+    public function updateItem(Item $item)
+    {
+        if (!$this->session->has('order')) {
+            return [];
+        }
+        $product = $item->getProduct();
+        $products = $this->session->get('order');
+        if (!empty($products[$product->getId()])) {
+            $products[$product->getId()] = $item->getCount();
+            $this->session->set('order', $products);
+        }
+    }
 }

@@ -14,11 +14,12 @@
                         <button><i class="flaticon-search"></i></button>
                     </form>
                 </div>
+
                 <div class="col-xl-4 col-lg-5">
                     <div class="user-panel">
                         <div class="up-item">
                             <i class="flaticon-profile"></i>
-                            <a href="#">Sign</a> In or <a href="#">Create Account</a>
+                            <a href="{{ path('app_login') }}">Войти</a> In or <a href="{{ path('app_register') }}">Зарегистрироваться</a>
                         </div>
                         <div class="up-item">
                             <div class="shopping-card">
@@ -26,15 +27,16 @@
                                     <fieldset>
                                         <input type="hidden" name="cmd" value="_cart" />
                                         <input type="hidden" name="display" value="1" />
+                                        <i class="flaticon-bag" id="show cart"></i>
                                         <input type="submit" name="submit" id="show_cart" value="Корзина" class="button" />
                                     </fieldset>
                                 </form>
-{#                                <i class="flaticon-bag"></i>#}
-                                <span>0</span>
-{#                            </div>#}
-{#                            <a href="#">Shopping Cart</a>#}
+{#                                <span>{{ cart.count }}</span>#}
+                                <span>?</span>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -56,12 +58,11 @@
                         <li><a href="./category.html">Category Page</a></li>
                         <li><a href="./cart.html">Cart Page</a></li>
                         <li><a href="./checkout.html">Checkout Page</a></li>
-                        <li><a href="#">Contact Page</a></li>
+                        <li><a href="{{ path('page_contact_us') }}">Contact Page</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Blog</a></li>
             </ul>
         </div>
     </nav>
-
-</header>
+    </div>

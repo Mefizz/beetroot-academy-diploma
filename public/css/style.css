@@ -453,6 +453,11 @@ ol {
 	visibility: visible;
 	opacity: 1;
 	margin-top: 0;
+
+}.main-menu li:hover .dropdown mega-dropdown active {
+	visibility: visible;
+	opacity: 1;
+	margin-top: 0;
 }
 
 .main-menu li:hover>a {
@@ -2092,6 +2097,10 @@ ol {
 .checkout-cart .price-list li.total {
 	padding-top: 35px;
 	font-weight: 700;
+}
+
+.delete-button {
+	background: #0a0a0a;
 }
 
 /* ----------------

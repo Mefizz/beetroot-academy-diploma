@@ -1,10 +1,3 @@
-// $(function () {
-//     $('#add_to_cart').on('click', function (event) {
-//         event.preventDefault();
-//         $.post(`/product/${PRODUCT_ID}/add_to_cart`, {token: TOKEN});
-//     });
-
-
 $(function() {
     $('.add_to_cart').on(
         'click',
@@ -26,8 +19,7 @@ $(function() {
             });
     });
 
-
-    $('.close1').on(
+    $('.delete-button').on(
         'click',
         function(event) {
             let productId = $(this).closest('tr').data('productid');

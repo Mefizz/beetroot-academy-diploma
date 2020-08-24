@@ -38,6 +38,17 @@ class Navigation
             'parent' => null
         ]);
     }
+    public function getMenuMen()
+    {
+        return $this->categoryRepo->findBy([
+            'id' => '4'
+        ]);
+    } public function getMenuWomen()
+{
+    return $this->categoryRepo->findBy([
+        'id' => '5'
+    ]);
+}
 
     public function getAllCategories()
     {

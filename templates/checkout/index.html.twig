@@ -34,138 +34,82 @@
 <section class="checkout-section spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 order-2 order-lg-1">
-                <form class="checkout-form">
-                    <div class="cf-title">Billing Address</div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <p>*Billing Information</p>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="cf-radio-btns address-rb">
-                                <div class="cfr-item">
-                                    <input type="radio" name="pm" id="one">
-                                    <label for="one">Use my regular address</label>
-                                </div>
-                                <div class="cfr-item">
-                                    <input type="radio" name="pm" id="two">
-                                    <label for="two">Use a different address</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row address-inputs">
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Address">
-                            <input type="text" placeholder="Address line 2">
-                            <input type="text" placeholder="Country">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" placeholder="Zip code">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" placeholder="Phone no.">
-                        </div>
-                    </div>
-                    <div class="cf-title">Delievery Info</div>
-                    <div class="row shipping-btns">
-                        <div class="col-6">
-                            <h4>Standard</h4>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="shipping" id="ship-1">
-                                    <label for="ship-1">Free</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <h4>Next day delievery  </h4>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="shipping" id="ship-2">
-                                    <label for="ship-2">$3.45</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cf-title">Payment</div>
-                    <ul class="payment-list">
-                        <li>Paypal<a href="#"><img src="img/paypal.png" alt=""></a></li>
-                        <li>Credit / Debit card<a href="#"><img src="img/mastercart.png" alt=""></a></li>
-                        <li>Pay when you get the package</li>
-                    </ul>
-                    <button class="site-btn submit-order-btn">Place Order</button>
-                </form>
-            </div>
-            <div class="col-lg-4 order-1 order-lg-2">
-                <div class="checkout-cart">
-                    <h3>Your Cart</h3>
-                    <h4>В вашей корзине: <span>{{ cart.count }} элементов</span></h4>
-{#                    {% for item in cart.getItems %}#}
-                    <ul class="product-list">
-                        <li>
-{#                            <div class="pl-thumb"><a href="{{ path('product_show', {'id': item.getProduct.id}) }}"><img src="{{ item.getProduct.image }}" alt=" " class="img-responsive"></a></div>#}
-{#                            <h6>{{ item.getTitle }}</h6>#}
-{#                            <p>{{ item.getCost }}$</p>#}
-                        </li>
-                        <li>
-                            <div class="pl-thumb"><img src="img/cart/2.jpg" alt=""></div>
-                            <h6>Animal Print Dress</h6>
-                            <p>$45.90</p>
-                        </li>
-                    </ul>
-                    <ul class="price-list">
-                        <li>Total<span>$99.90</span></li>
-                        <li>Shipping<span>free</span></li>
-                        <li class="total">Total<span>$99.90</span></li>
-                    </ul>
-                    {% if cart.empty %}
-                    <div class="col-md-8 address_form_agile">Ваша корзина пуста</div>
-                    {% else %}
-                        <div class="col-md-8 address_form_agile">
-                            <h4>Детали заказа</h4>
-                            {{ form_start(form, {'attr': {'class': 'creditly-card-form agileinfo_form'}}) }}
-                            <section class="creditly-wrapper wthree, w3_agileits_wrapper">
-                                <div class="information-wrapper">
-                                    <div class="first-row form-group">
-                                        <div class="controls">
-                                            <label class="control-label">Имя: </label>
-                                            {{ form_widget(form.username, {'attr': {'class': 'billing-address-name form-control', 'placeholder': 'Ваше имя'}}) }}
-                                        </div>
-                                        <div class="w3_agileits_card_number_grids">
-                                            <div class="w3_agileits_card_number_grid_left">
-                                                <div class="controls">
-                                                    <label class="control-label">Номер:</label>
-                                                    {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Телефон'}}) }}
-                                                </div>
-                                            </div>
-                                            <div class="clear"> </div>
-                                        </div>
-                                        <div class="controls">
-                                            <label class="control-label">Город </label>
-                                            {{ form_widget(form.city, {'attr': {'class': 'form-control', 'placeholder': 'Город'}}) }}
-                                        </div>
-                                        <div class="controls">
-                                            <label class="control-label">Email </label>
-                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
-                                        </div>
-                                        <div class="controls">
-                                            <label class="control-label">Адрес </label>
-                                            {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Адрес'}}) }}
-                                        </div>
-                                        {{ form_row(form._token) }}
+            <div class="col-lg-4 order-2 order-lg-1">
+                <div class="checkout-form">
+
+                    <div class="col address_form_agile">
+                        <h4>Детали заказа</h4>
+                        {{ form_start(form, {'attr': {'class': 'creditly-card-form agileinfo_form'}}) }}
+                        <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                            <div class="information-wrapper">
+                                <div class="first-row form-group">
+                                    <div class="controls">
+                                        <label class="control-label">Имя: </label>
+                                        {{ form_widget(form.username, {'attr': {'class': 'billing-address-name form-control', 'placeholder': 'Ваше имя'}}) }}
                                     </div>
-                                    <button class="submit check_out">Оплатить</button>
+                                    <div class="w3_agileits_card_number_grids">
+                                        <div class="w3_agileits_card_number_grid_left">
+                                            <div class="controls">
+                                                <label class="control-label">Номер:</label>
+                                                {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Телефон'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class="clear"> </div>
+                                    </div>
+                                    <div class="controls">
+                                        <label class="control-label">Город </label>
+                                        {{ form_widget(form.city, {'attr': {'class': 'form-control', 'placeholder': 'Город'}}) }}
+                                    </div>
+                                    <div class="controls">
+                                        <label class="control-label">Email </label>
+                                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                                    </div>
+                                    <div class="controls">
+                                        <label class="control-label">Адрес </label>
+                                        {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Адрес'}}) }}
+                                    </div>
+                                    {{ form_row(form._token) }}
                                 </div>
-                            </section>
-                            {{ form_end(form) }}
-                        </div>
-                    {% endif %}
-{#                    {% endfor %}#}
+                            </div>
+                        </section>
+
+                    </div>
+                    <button class="site-btn submit-order-btn" id ="submit check_out">  Place Order</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="col-lg-8 order-1 order-lg-2">
+                <div class="checkout-cart">
+                    <h4>В вашей корзине: <span>{{ cart.count }} элементов</span></h4>
+                    <table class="timetable_sub">
+                        <thead>
+                        <tr class="text-center">
+                            <th>SL No.</th>
+                            <th>Продукт</th>
+                            <th>Количество</th>
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>Общая стоимость</th>
+                            <th>Удалить</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in cart.getItems %}
+                            <tr class="rem1 text-center"  data-productid="{{ item.product.id }}">
+                                <td class="invert">1</td>
+                                <td class="invert-image"><a href="{{ path('product_show', {'id': item.getProduct.id}) }}"><img src="{{ item.getProduct.image }}" alt=" " class="img-responsive"></a></td>
+                                <td class="invert">
+                                    {{ item.count }}
+                                </td>
+                                <td class="invert">{{ item.getTitle }}</td>
+                                <td class="invert">{{ item.product.getCurrentPrice }} $</td>
+                                <td class="invert"><span class="item-total">{{ item.getCost }}</span> $</td>
+                                <td class="delete-button">
+                                    <i  class="fa fa-close fa-2x delete-button"></i>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody></table>
                 </div>
             </div>
         </div>

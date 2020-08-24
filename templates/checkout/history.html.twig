@@ -1,0 +1,246 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header section -->
+    {% include 'home/parts/header.html.twig' %}
+    <!-- Header section end -->
+
+
+    <!-- Page info -->
+    <div class="page-top-info">
+        <div class="container">
+            <h4>Order history</h4>
+            {% if app.request.get('status', 0) %}
+                <div class="alert alert-success" role="alert">
+                    Ваш Заказ успешно принят
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <section class="checkout-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 order-1 order-lg-2">
+                    <div class="checkout-cart">
+                        <table class="timetable_sub">
+                            <thead>
+                            <tr class="text-center">
+                                <th>SL No.</th>
+                                <th>Продукт</th>
+                                <th>Количество</th>
+                                <th>Название</th>
+                                <th>Цена</th>
+                                <th>Общая стоимость</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                                {% for orderProduct in order.orderProducts %}
+                                    <tr class="rem1 text-center" data-productid="{{ orderProduct.product.id }}">
+                                        <td class="invert">{{ order.id }}</td>
+                                        <td class="invert-image"><a href="{{ path('product_show', {'id': orderProduct.product.id}) }}"><img src="{{ orderProduct.product.image }}" alt=" " class="img-responsive"></a></td>
+                                        <td class="invert">
+                                                   {{ orderProduct.total }}
+                                        </td>
+                                        <td class="invert">{{ orderProduct.product.title }}</td>
+
+                                        <td class="invert">{{ orderProduct.product.getCurrentPrice }} $</td>
+                                        <td class="invert"><span class="item-total">{{ orderProduct.cost }}</span> $</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endfor %}
+                            </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- checkout section end -->
+
+    <!-- Footer section -->
+    <section class="footer-section">
+        <div class="container">
+            <div class="footer-logo text-center">
+                <a href="index.html"><img src="./img/logo-light.png" alt=""></a>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget about-widget">
+                        <h2>About</h2>
+                        <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam frin-gilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
+                        <img src="img/cards.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget about-widget">
+                        <h2>Questions</h2>
+                        <ul>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Track Orders</a></li>
+                            <li><a href="">Returns</a></li>
+                            <li><a href="">Jobs</a></li>
+                            <li><a href="">Shipping</a></li>
+                            <li><a href="">Blog</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">Partners</a></li>
+                            <li><a href="">Bloggers</a></li>
+                            <li><a href="">Support</a></li>
+                            <li><a href="">Terms of Use</a></li>
+                            <li><a href="">Press</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget about-widget">
+                        <h2>Questions</h2>
+                        <div class="fw-latest-post-widget">
+                            <div class="lp-item">
+                                <div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/1.jpg"></div>
+                                <div class="lp-content">
+                                    <h6>what shoes to wear</h6>
+                                    <span>Oct 21, 2018</span>
+                                    <a href="#" class="readmore">Read More</a>
+                                </div>
+                            </div>
+                            <div class="lp-item">
+                                <div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/2.jpg"></div>
+                                <div class="lp-content">
+                                    <h6>trends this year</h6>
+                                    <span>Oct 21, 2018</span>
+                                    <a href="#" class="readmore">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget contact-widget">
+                        <h2>Questions</h2>
+                        <div class="con-info">
+                            <span>C.</span>
+                            <p>Your Company Ltd </p>
+                        </div>
+                        <div class="con-info">
+                            <span>B.</span>
+                            <p>1481 Creekside Lane  Avila Beach, CA 93424, P.O. BOX 68 </p>
+                        </div>
+                        <div class="con-info">
+                            <span>T.</span>
+                            <p>+53 345 7953 32453</p>
+                        </div>
+                        <div class="con-info">
+                            <span>E.</span>
+                            <p>office@youremail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-links-warp">
+            <div class="container">
+                <div class="social-links">
+                    <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+                    <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+                    <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+                    <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+                    <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+                    <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+                    <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+                </div>
+
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+    <!--quantity-->
+    <script>
+        $('.value-plus').on('click', function(){
+            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+            divUpd.text(newVal);
+        });
+        $('.value-minus').on('click', function(){
+            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+            if(newVal>=1) divUpd.text(newVal);
+        });
+    </script>
+
+    <!-- //js -->
+    <!-- //script-for sticky-nav -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="{{ asset('js/move-top.js') }}"></script>
+    <script type="text/javascript" src="{{  asset('js/easing.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $(".dropdown").hover(
+                function() {
+                    $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function() {
+                    $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <script src="{{ asset('js/minicart.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
+    <script>
+        paypal.minicart.render();
+        paypal.minicart.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+            if (total < 3) {
+                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                evt.preventDefault();
+            }
+        });
+    </script>
+{% endblock %}

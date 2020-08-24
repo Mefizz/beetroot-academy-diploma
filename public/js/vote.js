@@ -1,18 +1,17 @@
 $(function() {
     let flag = true;
-    $('.starRating label').on('click', function() {
+    $('.p-rating i').on('click', function() {
         if (!flag) {
             return;
         }
         let id = $(this).attr('for');
         console.log(id);
-        let star = $(`#${id}`).val();
-        console.log(`Stars clicked: ${star}`);
+        let productId = $(`#${id}`).data('productid');
         $('.preloader').show();
-        $.post(`/product/${PRODUCT_ID}/vote`, {vote: star, token : TOKEN})
+        $.post(`/product/${productId}/vote`, {vote: id, token : TOKEN})
             .done(function(val) {
                 flag = false;
-                $(`.starRating label[for="rating${val}"]`).click();
+                $(`.p-rating i[for="rating${val}"]`).click();
                 flag = true;
             })
             .always(function() {
